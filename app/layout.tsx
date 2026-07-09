@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
 import { AppShell } from '@/components/shell/app-shell'
+import { PageTransition } from '@/components/omni/page-transition'
 import './globals.css'
 
 const geistSans = Geist({
@@ -49,7 +50,9 @@ export default function RootLayout({
       className={`bg-background ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
     >
       <body className="font-sans antialiased">
-        <AppShell>{children}</AppShell>
+        <AppShell>
+          <PageTransition>{children}</PageTransition>
+        </AppShell>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
