@@ -452,3 +452,181 @@ export const todaysInsights: Insight[] = [
     href: '/health',
   },
 ]
+
+// ---- Wealth DNA -----------------------------------------------------------
+
+export type WealthDna = {
+  archetype: string
+  riskStyle: string
+  decisionStyle: string
+  diversificationStyle: string
+  learningStyle: string
+  communicationStyle: string
+  traits: {
+    consistency: number
+    patience: number
+    discipline: number
+    conviction: number
+    adaptability: number
+  }
+  strengths: string[]
+  growthAreas: string[]
+  monthlyEvolution: { month: string; focus: string }[]
+  aiReflection: string
+}
+
+export const wealthDnaData: WealthDna = {
+  archetype: 'The Patient Compounder',
+  riskStyle: 'Measured & Calculated',
+  decisionStyle: 'Data-Informed',
+  diversificationStyle: 'Evolving, currently concentrated in large-caps',
+  learningStyle: 'Visual & Narrative-driven',
+  communicationStyle: 'Direct & Action-oriented',
+  traits: {
+    consistency: 85,
+    patience: 90,
+    discipline: 88,
+    conviction: 75,
+    adaptability: 60,
+  },
+  strengths: [
+    'Excellent SIP discipline, rarely pausing even during drawdowns.',
+    'Strong emergency buffer prevents panic selling.',
+    'Long-term horizon naturally filters out market noise.',
+  ],
+  growthAreas: [
+    'Heavy reliance on large-cap financials limits broader growth capture.',
+    'Debt management (personal loan) drags down overall returns.',
+    'Overlap in index funds suggests room for simplification.',
+  ],
+  monthlyEvolution: [
+    { month: 'Apr 24', focus: 'Started building emergency fund' },
+    { month: 'May 24', focus: 'Maintained SIPs despite market dip' },
+    { month: 'Jun 24', focus: 'Increased learning about diversification' },
+    { month: 'Jul 24', focus: 'Consolidated mutual fund portfolio' },
+  ],
+  aiReflection:
+    'You are a steady, long-term investor. Your ability to ignore market noise is your superpower. By simply untangling your fund overlaps and paying down that high-interest debt, your money will compound even faster. You don\'t need to take more risk; you just need to optimize the risk you\'re already taking.',
+}
+
+// ---- Wealth Journey -------------------------------------------------------
+
+export type JourneyMilestone = {
+  id: string
+  date: string
+  achievement: string
+  story: string
+  financialImpact: string
+  lessonLearned: string
+  aiReflection: string
+}
+
+export const wealthJourneyMilestones: JourneyMilestone[] = [
+  {
+    id: 'm1',
+    date: 'Aug 2019',
+    achievement: 'First Investment',
+    story: 'You took the leap and started your first ₹2,000 SIP into Axis Bluechip Fund. It felt uncertain, but it was the beginning of an automated wealth-building habit.',
+    financialImpact: 'Started with ₹2,000/month. That single decision snowballed into a ₹1.6Cr portfolio.',
+    lessonLearned: 'Getting started is harder than keeping going.',
+    aiReflection: 'This was your most important financial decision. Not because of the fund you chose, but because you built a system that runs without you having to think about it.',
+  },
+  {
+    id: 'm2',
+    date: 'Mar 2020',
+    achievement: 'The COVID Crash',
+    story: 'The market fell 30% in a month. Your portfolio was bleeding, but you didn\'t pause your SIPs. In fact, you added a little extra.',
+    financialImpact: 'Units bought during this period are up over 150%.',
+    lessonLearned: 'Volatility is the price of admission for long-term returns.',
+    aiReflection: 'You proved your resilience early. Holding through your first major drawdown without panicking is a rare trait that will serve you for decades.',
+  },
+  {
+    id: 'm3',
+    date: 'Dec 2022',
+    achievement: 'Emergency Fund Fully Funded',
+    story: 'You hit your target of holding 6 months of expenses in a liquid FD. For the first time, you had a financial shock absorber.',
+    financialImpact: 'Secured ₹4.2L in safe, accessible reserves.',
+    lessonLearned: 'Cash isn\'t trash; it\'s emotional insurance.',
+    aiReflection: 'This was the moment you stopped investing from a place of anxiety and started investing from a place of security.',
+  },
+  {
+    id: 'm4',
+    date: 'Today',
+    achievement: 'Crossing ₹24L in Gains',
+    story: 'Your investments have officially earned you over ₹24,000,000 in pure returns. Your money is now working as hard as you do.',
+    financialImpact: 'Current value: ₹1.51Cr. Invested: ₹1.27Cr.',
+    lessonLearned: 'Time in the market beats timing the market.',
+    aiReflection: 'You are now seeing the true power of compounding. The next ₹24L in gains will happen much faster than the first.',
+  }
+]
+
+// ---- Future Self ----------------------------------------------------------
+
+export type FutureProjection = {
+  year: number
+  currentStrategy: number
+  alternativeStrategy: number
+}
+
+export type FutureScenario = {
+  id: string
+  title: string
+  description: string
+  assumptions: string[]
+  confidence: 'High' | 'Medium' | 'Low'
+  tradeOffs: string[]
+  educationalInsight: string
+  aiReflection: string
+  data: FutureProjection[]
+}
+
+export const futureSelfScenarios: FutureScenario[] = [
+  {
+    id: 'debt-clearance',
+    title: 'Clearing High-Interest Debt',
+    description: 'What if you paused investing briefly to wipe out your 14% personal loan?',
+    assumptions: [
+      'Redirect ₹15,000/mo from SIPs to loan EMI for 8 months.',
+      'Resume SIPs after loan is cleared, adding the old EMI amount.',
+      'Portfolio grows at a conservative 10% CAGR.',
+    ],
+    confidence: 'High',
+    tradeOffs: [
+      'Short-term dip in investment contributions.',
+      'Guaranteed 14% return by avoiding interest.',
+    ],
+    educationalInsight: 'Paying off a 14% loan is mathematically identical to finding a guaranteed, tax-free 14% investment. It is almost impossible to beat that in the stock market safely.',
+    aiReflection: 'This is the most certain path to accelerating your wealth. The stock market is volatile, but debt interest is absolute. Kill the debt, then redirect that cashflow to your future.',
+    data: [
+      { year: 2024, currentStrategy: 15100000, alternativeStrategy: 15100000 },
+      { year: 2029, currentStrategy: 24500000, alternativeStrategy: 25200000 },
+      { year: 2034, currentStrategy: 39500000, alternativeStrategy: 41800000 },
+      { year: 2039, currentStrategy: 63500000, alternativeStrategy: 68500000 },
+      { year: 2044, currentStrategy: 102000000, alternativeStrategy: 111000000 },
+    ],
+  },
+  {
+    id: 'step-up-sip',
+    title: 'The 10% Step-Up SIP',
+    description: 'What happens if you increase your investments by 10% every year as your income grows?',
+    assumptions: [
+      'Increase monthly SIP amount by 10% annually.',
+      'Portfolio return remains constant at 11% CAGR.',
+      'Inflation averages 6%.',
+    ],
+    confidence: 'Medium',
+    tradeOffs: [
+      'Requires disciplined lifestyle inflation management.',
+      'Slightly less disposable income today for significantly more tomorrow.',
+    ],
+    educationalInsight: 'Your expenses usually grow with your income. If your investments don\'t step up alongside them, your real wealth stagnates. A step-up SIP automates lifestyle discipline.',
+    aiReflection: 'You are already incredibly consistent. If you simply tie your investment growth to your salary growth, you will hit your retirement goal nearly 5 years earlier without feeling a pinch in your daily life.',
+    data: [
+      { year: 2024, currentStrategy: 15100000, alternativeStrategy: 15100000 },
+      { year: 2029, currentStrategy: 24500000, alternativeStrategy: 26800000 },
+      { year: 2034, currentStrategy: 39500000, alternativeStrategy: 46200000 },
+      { year: 2039, currentStrategy: 63500000, alternativeStrategy: 81500000 },
+      { year: 2044, currentStrategy: 102000000, alternativeStrategy: 145000000 },
+    ],
+  }
+]

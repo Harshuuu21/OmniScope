@@ -7,6 +7,9 @@ import {
   Sparkles,
   Target,
   Wallet,
+  Dna,
+  Route,
+  Telescope,
 } from 'lucide-react'
 
 export type NavItem = {
@@ -25,4 +28,7 @@ export const navItems: NavItem[] = [
   { href: '/goals', label: 'Goals', question: 'Am I getting closer to my dreams?', icon: Target },
   { href: '/learn', label: 'Learning', question: 'What should I understand next?', icon: GraduationCap },
   { href: '/mentor', label: 'AI Mentor', question: 'What should I do now?', icon: Sparkles },
+  { href: '/dna', label: 'Wealth DNA', question: 'Who am I as an investor?', icon: Dna },
+  { href: '/journey', label: 'Wealth Journey', question: 'How have I grown?', icon: Route },
+  { href: '/future', label: 'Future Self', question: 'Where am I heading?', icon: Telescope },
 ]
