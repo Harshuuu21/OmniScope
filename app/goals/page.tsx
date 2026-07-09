@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Car, GraduationCap, Home, Palmtree, ShieldCheck, ChevronDown, ChevronUp, Target, AlertTriangle, Lightbulb } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { PageHeader, InsightBlock } from '@/components/omni/primitives'
+import { MentorNotes } from '@/components/omni/mentor-notes'
 import { goals, type Goal } from '@/lib/data'
 import { formatINRCompact } from '@/lib/format'
 import { cn } from '@/lib/utils'
@@ -66,10 +67,11 @@ export default function GoalsPage() {
       </div>
       
       <StaggerItem className="mt-8">
-        <InsightBlock
-          tone="attention"
-          title="Contextual AI Insight"
-          body="Your total required monthly savings across all goals is slightly higher than your current total SIPs. Because you are heavily front-loading your retirement goal, you are covering the gap. However, as Aarav's education approaches in 2035, you may need to re-route some retirement contributions to that specific bucket."
+        <MentorNotes
+          title="Goal Intelligence"
+          content="Your total required monthly savings across all goals is slightly higher than your current total SIPs. Because you are heavily front-loading your retirement goal, you are covering the gap. However, as Aarav's education approaches in 2035, you may need to re-route some retirement contributions to that specific bucket."
+          confidence="Medium"
+          actionable
         />
       </StaggerItem>
     </StaggerContainer>
@@ -190,10 +192,10 @@ function GoalCard({ goal }: { goal: Goal }) {
                 </div>
               </div>
 
-              <InsightBlock
-                tone="neutral"
+              <MentorNotes
                 title="AI Goal Intelligence"
-                body={goal.aiRecommendation}
+                content={goal.aiRecommendation}
+                confidence={goal.confidence}
               />
             </div>
           </motion.div>

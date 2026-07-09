@@ -1,12 +1,13 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Info } from 'lucide-react'
 import { Card } from '@/components/ui/card'
-import { Delta, InsightBlock, PageHeader, StatValue } from '@/components/omni/primitives'
+import { Delta, InsightBlock, StatValue } from '@/components/omni/primitives'
 import { GrowthChart } from '@/components/omni/growth-chart'
 import { AnimatedNumber } from '@/components/omni/animated-number'
 import { DonutChart } from '@/components/omni/donut-chart'
 import { ScoreRing } from '@/components/omni/score-ring'
 import { StaggerContainer, StaggerItem } from '@/components/omni/page-transition'
+import { MentorNotes } from '@/components/omni/mentor-notes'
 import {
   allocationByClass,
   goals,
@@ -16,6 +17,7 @@ import {
   portfolioSummary,
   todaysInsights,
 } from '@/lib/data'
+import { todaysFinancialStory } from '@/lib/data-m4'
 import { formatINRCompact } from '@/lib/format'
 
 export default function DashboardPage() {
@@ -24,15 +26,44 @@ export default function DashboardPage() {
   const allocation = allocationByClass()
   const learn = learningProgress()
   const goalsOnTrack = goals.filter((g) => g.onTrack).length
+  const story = todaysFinancialStory
 
   return (
     <StaggerContainer>
-      <StaggerItem>
-        <PageHeader
-          eyebrow="Good evening, Rohan"
-          title="How is your financial life today?"
-          question="A calm, honest view of everything you own — and the one or two things worth your attention."
-        />
+      <StaggerItem className="mb-10">
+        <h1 className="text-3xl font-semibold tracking-tight text-foreground mb-6">
+          Today's Financial Story
+        </h1>
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">What Happened</h2>
+              <p className="text-base text-foreground leading-relaxed">{story.whatHappened}</p>
+            </div>
+            <div>
+              <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Why It Happened</h2>
+              <p className="text-base text-foreground leading-relaxed">{story.whyItHappened}</p>
+            </div>
+            <div>
+              <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Does It Matter?</h2>
+              <p className="text-base text-foreground leading-relaxed">{story.doesItMatter}</p>
+            </div>
+            <div className="pt-2">
+              <span className="inline-flex items-center gap-2 rounded-lg bg-accent px-3 py-1.5 text-sm font-medium text-accent-foreground">
+                <Info className="size-4" />
+                {story.action}
+              </span>
+            </div>
+          </div>
+          <div>
+            <MentorNotes 
+              title="Educational Takeaway" 
+              content={story.educationalTakeaway} 
+              confidence={story.confidence}
+              actionable
+            />
+          </div>
+        </div>
       </StaggerItem>
 
       {/* Hero: the two numbers that matter most */}

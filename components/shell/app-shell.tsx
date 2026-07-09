@@ -3,9 +3,10 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { Menu, Sparkles, X } from 'lucide-react'
+import { Menu, Sparkles, X, Search, ShieldCheck, Lock } from 'lucide-react'
 import { navItems } from '@/lib/nav'
 import { cn } from '@/lib/utils'
+import { CommandPalette } from './command-palette'
 
 function Wordmark() {
   return (
@@ -79,6 +80,26 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             />
           ))}
         </nav>
+        
+        <div className="px-3 pb-4">
+          <button
+            type="button"
+            className="flex w-full items-center justify-between gap-2 rounded-lg border border-border bg-background px-3 py-2 text-sm text-muted-foreground shadow-sm hover:bg-accent hover:text-accent-foreground"
+            onClick={() => {
+              const event = new KeyboardEvent('keydown', { key: 'k', metaKey: true })
+              document.dispatchEvent(event)
+            }}
+          >
+            <span className="flex items-center gap-2">
+              <Search className="size-4" />
+              <span>Search...</span>
+            </span>
+            <kbd className="hidden rounded bg-muted px-1.5 py-0.5 text-[10px] font-medium sm:inline-block">
+              <span className="text-xs">⌘</span>K
+            </kbd>
+          </button>
+        </div>
+
         <div className="border-t border-sidebar-border p-3">
           <div className="flex items-center gap-3 rounded-lg px-2 py-2">
             <span className="flex size-9 items-center justify-center rounded-full bg-accent text-sm font-medium text-accent-foreground">
@@ -88,6 +109,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <p className="truncate text-sm font-medium text-foreground">Rohan Sharma</p>
               <p className="truncate text-xs text-muted-foreground">Investor since 2019</p>
             </div>
+          </div>
+          <div className="mt-2 flex flex-col gap-1 px-2">
+            <Link href="/reputation" className="text-xs text-muted-foreground hover:text-foreground transition-colors py-1 flex items-center gap-2">
+              <ShieldCheck className="size-3.5" /> Financial Identity
+            </Link>
+            <Link href="/trust" className="text-xs text-muted-foreground hover:text-foreground transition-colors py-1 flex items-center gap-2">
+              <Lock className="size-3.5" /> Trust Center
+            </Link>
           </div>
         </div>
       </aside>
@@ -141,12 +170,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      {/* Main content */}
       <main className="lg:pl-64">
         <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
           {children}
         </div>
       </main>
+      
+      <CommandPalette />
     </div>
   )
 }

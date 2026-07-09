@@ -4,6 +4,7 @@ import { HoldingsTable } from '@/components/portfolio/holdings-table'
 import { computeHoldings, portfolioSummary } from '@/lib/data'
 import { formatINRCompact } from '@/lib/format'
 import { StaggerContainer, StaggerItem } from '@/components/omni/page-transition'
+import { MentorNotes } from '@/components/omni/mentor-notes'
 
 export const metadata = {
   title: 'Portfolio — OmniScope',
@@ -51,19 +52,18 @@ export default function PortfolioPage() {
       </div>
 
       <StaggerItem>
-        <Card className="mt-6 p-4 sm:p-6 mb-6">
-          <HoldingsTable holdings={holdings} />
-        </Card>
+        <MentorNotes
+          title="AI Perspective"
+          content="Your portfolio is highly efficient. The 18.9% total gain is primarily driven by your consistent SIPs in large-cap funds. By avoiding the temptation to over-trade direct stocks, you've allowed compounding to work undisturbed. Continue holding steady."
+          confidence="High"
+          actionable
+        />
       </StaggerItem>
 
       <StaggerItem>
-        <InsightBlock
-          tone="positive"
-          title="Contextual AI Insight"
-          body="Your portfolio is highly efficient. The 18.9% total gain is primarily driven by your consistent SIPs in large-cap funds. By avoiding the temptation to over-trade direct stocks, you've allowed compounding to work undisturbed. Continue holding steady."
-          cta="See Portfolio X-Ray"
-          href="/x-ray"
-        />
+        <Card className="mt-6 p-4 sm:p-6 mb-6">
+          <HoldingsTable holdings={holdings} />
+        </Card>
       </StaggerItem>
     </StaggerContainer>
   )

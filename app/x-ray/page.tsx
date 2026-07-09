@@ -4,7 +4,9 @@ import { LookThroughChart } from '@/components/xray/look-through-chart'
 import { OverlapList } from '@/components/xray/overlap-list'
 import { MarketCapBar } from '@/components/xray/market-cap-bar'
 import { DependencyGraph } from '@/components/xray/dependency-graph'
+import { RiskRadarChart, CorrelationMatrix, AllocationTreemap, GeographicExposure, RebalancingSuggestion } from '@/components/xray/xray-visualizations'
 import { StaggerContainer, StaggerItem } from '@/components/omni/page-transition'
+import { MentorNotes } from '@/components/omni/mentor-notes'
 import {
   fundOverlaps,
   lookThrough,
@@ -15,19 +17,7 @@ import {
 import { ArrowRight, LockKeyhole, Search, SlidersHorizontal, Map, Layers } from 'lucide-react'
 
 export const metadata = {
-  title: 'Portfolio X-Ray — OmniScope',
-}
-
-function PlaceholderCard({ title, description, icon: Icon }: { title: string, description: string, icon: any }) {
-  return (
-    <Card className="flex flex-col items-center justify-center p-8 text-center min-h-[200px] border-dashed border-2 bg-muted/20">
-      <div className="mb-3 rounded-full bg-muted p-3 text-muted-foreground">
-        <Icon className="size-6" />
-      </div>
-      <h3 className="text-sm font-medium text-foreground">{title}</h3>
-      <p className="mt-1 text-xs text-muted-foreground max-w-[200px]">{description}</p>
-    </Card>
-  )
+  title: 'Portfolio X-Ray 3.0 — OmniScope',
 }
 
 export default function XRayPage() {
@@ -142,33 +132,39 @@ export default function XRayPage() {
         </div>
       </div>
 
-      {/* Placeholders for future modular visualisations */}
+      <StaggerItem className="mt-8">
+        <MentorNotes
+          title="AI Perspective"
+          content="While your surface-level portfolio looks diversified across 12 funds and stocks, your Correlation Matrix and Geographic Exposure reveal high reliance on the Indian large-cap financial sector. Consider reviewing the Rebalancing Opportunity to optimize your risk-adjusted returns."
+          confidence="Medium"
+          actionable
+        />
+      </StaggerItem>
+
+      {/* Advanced Visualizations */}
       <StaggerItem className="mt-10">
         <h2 className="mb-4 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
-          Coming Soon to X-Ray
+          Advanced Portfolio Intelligence
         </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <PlaceholderCard 
-            title="Sankey Diagram" 
-            description="Visualize the full flow of capital across asset classes."
-            icon={SlidersHorizontal} 
-          />
-          <PlaceholderCard 
-            title="Geographic Exposure" 
-            description="See your wealth mapped globally."
-            icon={Map} 
-          />
-          <PlaceholderCard 
-            title="Risk Radar" 
-            description="Multi-dimensional risk analysis vs benchmarks."
-            icon={Search} 
-          />
-          <PlaceholderCard 
-            title="Hidden Holdings" 
-            description="Uncover deeply nested unlisted investments."
-            icon={LockKeyhole} 
-          />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+          <Card className="p-5 col-span-1">
+            <h3 className="text-sm font-semibold text-foreground mb-4">Risk Radar</h3>
+            <RiskRadarChart />
+          </Card>
+          <Card className="p-5 col-span-1">
+            <h3 className="text-sm font-semibold text-foreground mb-4">Asset Allocation</h3>
+            <AllocationTreemap />
+          </Card>
+          <Card className="p-5 col-span-1">
+            <h3 className="text-sm font-semibold text-foreground mb-4">Correlation Matrix</h3>
+            <CorrelationMatrix />
+          </Card>
+          <Card className="p-5 col-span-1">
+            <h3 className="text-sm font-semibold text-foreground mb-4">Geographic Exposure</h3>
+            <GeographicExposure />
+          </Card>
         </div>
+        <RebalancingSuggestion />
       </StaggerItem>
 
     </StaggerContainer>

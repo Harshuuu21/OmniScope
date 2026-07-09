@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { ArrowRight, CircleCheck, GraduationCap, LayoutGrid, Network } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { PageHeader, InsightBlock } from '@/components/omni/primitives'
+import { MentorNotes } from '@/components/omni/mentor-notes'
 import { StaggerContainer, StaggerItem } from '@/components/omni/page-transition'
 import { learningModules, learningProgress, type LearningModule } from '@/lib/data'
 import { SkillTree } from '@/components/omni/skill-tree'
@@ -101,10 +102,10 @@ export default function LearnPage() {
                 <ModuleCard module={activeModule} />
                 
                 {activeModule.aiRecommendation && (
-                  <InsightBlock
-                    tone="positive"
+                  <MentorNotes
                     title="AI Recommendation"
-                    body={activeModule.aiRecommendation}
+                    content={activeModule.aiRecommendation}
+                    confidence="High"
                   />
                 )}
               </motion.div>

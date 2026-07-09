@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 import { HealthEvolutionChart } from '@/components/omni/health-chart'
 import { Sparkles, TrendingUp, Activity, CheckCircle2 } from 'lucide-react'
 import { StaggerContainer, StaggerItem } from '@/components/omni/page-transition'
+import { MentorNotes } from '@/components/omni/mentor-notes'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const statusMeta = {
@@ -123,6 +124,14 @@ export default function HealthPage() {
         </Card>
       </StaggerItem>
 
+      <StaggerItem>
+        <MentorNotes
+          title="AI Perspective"
+          content="Your health score is incredibly robust for your age bracket. Most investors struggle with the Savings Rate and Emergency Fund pillars. Because you have secured those, you have the psychological safety net required to ride out market volatility in your equity investments."
+          confidence="High"
+        />
+      </StaggerItem>
+
       {/* Pillars */}
       <section className="mt-8">
         <h2 className="mb-4 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
@@ -168,14 +177,6 @@ export default function HealthPage() {
           })}
         </div>
       </section>
-
-      <StaggerItem className="mt-8">
-        <InsightBlock
-          tone="positive"
-          title="Contextual AI Insight"
-          body="Your health score is incredibly robust for your age bracket. Most investors struggle with the Savings Rate and Emergency Fund pillars. Because you have secured those, you have the psychological safety net required to ride out market volatility in your equity investments."
-        />
-      </StaggerItem>
     </StaggerContainer>
   )
 }
