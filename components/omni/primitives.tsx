@@ -96,17 +96,23 @@ const severityMap = {
   medium: 'border-l-warning bg-warning-muted/40',
 } as const
 
+import Link from 'next/link'
+
 /** An insight — one purpose, one insight, an optional action. */
 export function InsightBlock({
   tone,
   title,
   body,
   action,
+  cta,
+  href,
 }: {
   tone: keyof typeof severityMap
   title: string
   body: string
   action?: ReactNode
+  cta?: string
+  href?: string
 }) {
   return (
     <div className={cn('rounded-xl border-l-2 px-5 py-4', severityMap[tone])}>
@@ -115,6 +121,17 @@ export function InsightBlock({
         {body}
       </p>
       {action && <div className="mt-3">{action}</div>}
+      {cta && (
+        <div className="mt-3">
+          {href ? (
+            <Link href={href} className="text-xs font-medium text-primary hover:underline">
+              {cta} &rarr;
+            </Link>
+          ) : (
+            <p className="text-xs font-medium text-primary">{cta}</p>
+          )}
+        </div>
+      )}
     </div>
   )
 }

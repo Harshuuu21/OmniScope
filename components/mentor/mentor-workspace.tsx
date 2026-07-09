@@ -66,14 +66,14 @@ export function MentorWorkspace() {
                 )}
                 
                 <div className={`max-w-[85%] space-y-4 ${m.role === 'user' ? 'bg-primary text-primary-foreground rounded-2xl rounded-tr-sm px-5 py-3.5' : 'text-foreground pt-1'}`}>
-                  {m.content && (
+                  {(m as any).content && (
                     <div className="prose prose-sm dark:prose-invert max-w-none text-pretty leading-relaxed">
-                      {m.content}
+                      {(m as any).content}
                     </div>
                   )}
                   
                   {/* Handle Mock Tool Calls for Generative UI */}
-                  {m.toolInvocations?.map((toolInvocation: any) => {
+                  {(m as any).toolInvocations?.map((toolInvocation: any) => {
                     const { toolName, toolCallId, state, args } = toolInvocation
                     
                     if (state === 'result') {
