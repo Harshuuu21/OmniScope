@@ -11,6 +11,8 @@
   "dependencies": {
     "@ai-sdk/react": "^4.0.19",
     "@base-ui/react": "^1.5.0",
+    "@radix-ui/react-dialog": "^1.1.19",
+    "@radix-ui/react-visually-hidden": "^1.2.7",
     "@vercel/analytics": "1.6.1",
     "@xyflow/react": "^12.11.2",
     "ai": "^7.0.18",
